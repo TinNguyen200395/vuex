@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <NavBar/>
+     <ToDo/>
+     <StatusBar/>
+     <ProgressBar/>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import NavBar from './components/nav-bar.vue';
+import ToDo from './components/Todos.vue';
+import StatusBar from './components/status-bar.vue';
+import ProgressBar from './components/progress-bar.vue';
 
-export default {
-  name: 'App',
+
+@Component({
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    ToDo,
+    StatusBar,
+    ProgressBar
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style>
