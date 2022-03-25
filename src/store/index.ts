@@ -39,13 +39,28 @@ const storeData = {
                 if(todo.id === todoId) todo.completed = !todo.completed
                 return todo
             })
+        },
+        DELETE_TODO(state:any,todoId:any){
+            state.todos = state.todos.filter((todo:any) => todo.id!= todoId)
+        },
+        ADD_TODO(state:any,newTodo:any){
+            state.todos.unshift(newTodo)
+            
         }
-
 
     },
     // dùng để ây dựng các method 
     actions:{
+                // deleteTodo(context:any,todoId:any){
+                //     context.commit('DELETE_TODO', todoId)
 
+                // }
+                addTodo({commit}:any,newTodo:any){
+                        commit('ADD_TODO',newTodo)
+                },
+                deleteTodo({commit}:any,todoId:any){
+                    commit('DELETE_TODO',todoId)
+                }
 
     }
 }

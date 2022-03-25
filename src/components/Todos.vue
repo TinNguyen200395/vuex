@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <FormTodo />
     <ul v-if="getAuth.isAuthenticated">
       <li
         v-for="todo in getList"
@@ -7,7 +8,12 @@
         :class="todo.completed ? 'completed' : ''"
       >
         {{ todo.title }}
-        <input type="checkbox" :checked="todo.completed" @change="markTodoCompleted(todo.id)"/>
+        <input
+          type="checkbox"
+          :checked="todo.completed"
+          @change="markTodoCompleted(todo.id)"
+        />
+        <button @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
     <p v-else style="text-align: center">Not authorised</p>
@@ -17,14 +23,20 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Getter } from "vuex-class";
-@Component
+import FormTodo from '../components/form-todo.vue';
+
+@Component({
+  components: {FormTodo},
+})
 export default class ToDo extends Vue {
   @Getter getList!: any[];
   @Getter getAuth!: any;
-  markTodoCompleted(todoId: any){
-    this.$store.commit('MARK_COMPLETE',todoId)
-
-}
+  markTodoCompleted(todoId: any) {
+    this.$store.commit("MARK_COMPLETE", todoId);
+  }
+  deleteTodo(todoId: any) {
+    this.$store.dispatch("deleteTodo", todoId);
+  }
   mounted() {
     console.log(this.getList);
   }

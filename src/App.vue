@@ -15,6 +15,7 @@ import StatusBar from './components/status-bar.vue';
 import ProgressBar from './components/progress-bar.vue';
 
 
+
 @Component({
   components: {
     NavBar,
