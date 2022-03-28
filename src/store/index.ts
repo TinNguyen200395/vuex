@@ -10,7 +10,7 @@ const storeData = {
             {id:3, title: 'Viec 3', completed:false}
         ],
         auth:{
-            isAuthenticated: true
+            isAuthenticated: false
         }
     },
     // dùng để nhận dữ liệu

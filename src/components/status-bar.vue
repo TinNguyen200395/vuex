@@ -17,8 +17,6 @@ import { Getter } from "vuex-class";
 
 @Component
 export default class StatusBar extends Vue {
-  @Getter getList!: any[];
-  @Getter getAuth!:any
   @Getter getListDone!: any[]
 
 }
